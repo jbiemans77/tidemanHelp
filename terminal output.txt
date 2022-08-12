@@ -1,0 +1,24 @@
+Looping i: 0
+Looping x: 0
+i is 0.  Locking pair [0][1]
+Looping x: 1
+i is 0.  Locking pair [0][1]
+Looping x: 2
+i is 0.  Locking pair [0][1]
+Looping i: 1
+Looping x: 0
+Found lock.  i = 1.  x = 0.  [0][1]
+Looping j: 0
+Looping j: 1
+Looping j: 2
+Looping x: 1
+i is 1.  Locking pair [2][0]
+Looping x: 2
+i is 1.  Locking pair [2][0]
+Looping i: 2
+Looping x: 0
+i is 2.  Locking pair [1][2]
+Looping x: 1
+Found lock.  i = 2.  x = 1.  [2][0]
+Looping j: 0
+c
