@@ -1,0 +1,78 @@
+The logic used in the example question:
+
+[Alice] beat [Bob].
+	--- Check for loop.
+	- Is [Alice] == [Bob]
+		- If yes return true
+	- Is there a locked pair where [Bob] beat someone?
+		- If No: return false
+		- If Yes: Who did [Bob] beat?....
+
+If false then lock pair
+
+[Charlie] beat [Alice].
+	---- Check for loop
+	- Is [Charlie] == [Alice]
+		- If yes return true
+	- Is there a locked pair where [Alice] beat someone?
+	- If no: return false
+	- If Yes: Who did [Alice] beat?
+		[Alice] beat [Bob].
+			--- Check for loop
+			- Is [Charlie] == [Bob]
+				- If yes return true
+			- Is there a locked pair where [Bob] beat someone?
+			- if No: return false
+			- If yes: Who did [Bob] beat?.....
+
+If false then lock pair
+
+[Bob] beat [Charlie]
+	--- Check for loop
+	- Is [Bob] == [Charlie]
+		- If yes return true
+	- Is there a locked pair where [Charlie] beat someone?
+	- If no: return false
+	- If Yes: Who did [Charlie] beat?
+		[Charlie] beat [Alice].
+		---- Check for loop
+		- Is [Bob] == [Alice]
+			- If yes return true
+		- Is there a locked pair where [Alice] beat someone?
+		- If no: return false
+		- If Yes: Who did [Alice] beat?
+			[Alice] beat [Bob].
+				--- Check for loop
+				- Is [Bob] == [Bob]
+					- If yes return true
+				- Is there a locked pair where [Bob] beat someone?
+				- if No: return false
+				- If yes: Who did [Bob] beat?
+
+Now, pay attention to what is duplicated in the Code.  What can you abstract out to use over and over again?  What variables are fed into it on each run?  What is the output?
+
+[winner1] beat [loser]
+	--- Check for loop
+	- Is [winner1] == [loser]
+		- If yes return true
+	- Is there a locked pair where [loser] beat someone?
+	- If no: return false
+	- If Yes: Who did [loser] beat?
+		[winner(previous loser)] beat [loser].
+		---- Check for loop
+		- Is [winner1] == [loser]
+			- If yes return true
+		- Is there a locked pair where [loser] beat someone?
+		- If no: return false
+		- If Yes: Who did [loser] beat?
+			[winner(previous loser)] beat [loser].
+				--- Check for loop
+				- Is [winner1] == [loser]
+					- If yes return true
+				- Is there a locked pair where [loser] beat someone?
+				- if No: return false
+				- If yes: Who did [loser] beat?
+
+There is one final piece missing to the above.  When you finally return true at the bottom of the 3rd call, how do you back out through all the previous calls?  How could you return the true value back up to them so that they can check for it?
+
+I don't think I can give you too much more help than this though without it being against the rules.
